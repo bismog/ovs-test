@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+
+PID=$(docker inspect --format "{{.State.Pid}}" "$1")
+[ -z "$PID" ] && exit 1
+
+nsenter --mount --uts --ipc --net --pid --target $PID 
