@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Remove legacy resources
 ovs-vsctl del-port patch_to_vswitch0
 ovs-vsctl del-port patch_to_vswitch1
 
@@ -14,6 +15,8 @@ ovs-vsctl del-br vswitch1
 docker stop vm1 vm2 vm3 vm4
 docker rm vm1 vm2 vm3 vm4
 
+# Rebuld image
+docker build . -t c7
 
 ##########
 
